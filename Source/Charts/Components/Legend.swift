@@ -113,6 +113,9 @@ open class Legend: ComponentBase
     
     /// The size of the legend forms
     @objc open var formSize = CGFloat(8.0)
+
+    /// The radius of the legend forms
+    @objc open var formRadius: CGFloat = 0.0
     
     /// The line width for forms that consist of lines
     @objc open var formLineWidth = CGFloat(3.0)
