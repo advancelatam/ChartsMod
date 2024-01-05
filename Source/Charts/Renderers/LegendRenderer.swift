@@ -11,6 +11,7 @@
 
 import Foundation
 import CoreGraphics
+import UIKit
 
 @objc(ChartLegendRenderer)
 open class LegendRenderer: NSObject, Renderer
@@ -516,8 +517,11 @@ open class LegendRenderer: NSObject, Renderer
         case .square:
             
             context.setFillColor(formColor.cgColor)
-            context.fill(CGRect(x: x, y: y - formSize / 2.0, width: formSize, height: formSize))
-            
+            let squarePath = UIBezierPath(roundedRect: CGRect(x: x, y: y - formSize / 2.0, width: formSize, height: formSize), cornerRadius: legend.formRadius)
+            context.addPath(squarePath.cgPath)
+            context.closePath()
+            context.fillPath()
+                        
         case .line:
             
             let formLineWidth = entry.formLineWidth.isNaN ? legend.formLineWidth : entry.formLineWidth
